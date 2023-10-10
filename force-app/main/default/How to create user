@@ -1,0 +1,12 @@
+1. login to Salesforce.com and navigate toSetup | Administer | Manage Users | Users.
+2. Click on Users button as shown above.
+3. Click on New User 
+4. When creating a new user in Salesforce it is important to assign Roles, User license and Profile to the new user.
+Note :- Username in Salesforce must be in Email address format and unique.
+5. Enter First name, last name, Alias, Email address.
+6. Now Assign a Role to the user.
+7. Now assign user license to the new user.
+8. Assign a profile to the user.
+9. Now select generate passwords and notify user via email.
+10. Click on Save button.
+11. A verification email will be sent to the Email.

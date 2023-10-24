@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="isOpen" type="boolean" default="false" access="public"/>
+    <aura:attribute name="Name" type="String" default=""/>
+    <aura:attribute name="Stages" type="String" default=""/>
+    <aura:attribute name="fund" type="Decimal" default="false"/>
+    <aura:attribute name="StartDate" type="date" default=""/>
+    <aura:attribute name="Domain" type="String" default=""/>
+    <aura:method name="showChildModal" action="{!c.openModal}" access="public">
+        <aura:attribute name="openModal" type="Boolean" default ="false" access="public"/>
+    </aura:method>
+    <div class="slds-m-around_xx-large">
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" aria-modal="true" class="slds-modal-fade-in-open">
+        	<div class="slds-modal__container">
+                <header class="slds-modal__header">
+            	<lightning:input Type="Text" label="Innovation Name" value="{!v.Name}"/>
+            	</header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                
+                    
+                </div>
+                <footer class="slds-modal__footer">
+                
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        	                
+    </aura:if>
+    </div>
+</aura:component>

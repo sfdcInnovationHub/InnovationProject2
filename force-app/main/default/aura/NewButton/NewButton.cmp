@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<lightning:recordEditForm objectApiName="Innovation__c" onsubmit="{!c.handleSave}" onsuccess="{!c.handleSuccess}" aura:id = "recordEditForm">
+        <lightning:inputField fieldName="Name" aura:id="name"></lightning:inputField>
+        
+        <lightning:button type="submit" name="save" label="Save" class="slds-m-top_medium"/>
+    </lightning:recordEditForm>
+</aura:component>

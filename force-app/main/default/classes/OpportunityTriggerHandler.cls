@@ -6,7 +6,7 @@ public class OpportunityTriggerHandler extends TriggerHandler {
     	runValidations(newList);
         
   }
-    private void runValidations(List<SObject> newList) {
+    public static void runValidations(List<SObject> newList) {
         for(SObject opp: newList){
             Opportunity newOpp = (Opportunity) opp;
             String Type = (String) newOpp.get('Type');

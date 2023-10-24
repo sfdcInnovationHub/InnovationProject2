@@ -27,16 +27,17 @@ public class AccountTriggerHandler extends TriggerHandler {
                     String isOldActive = (String) oldAccount.get('Active__c');
     
                     // Compare Active__c values
-                    if (isNewActive == isOldActive) {
+                    
                         if (isOldActive=='Yes' && isNewActive=='Yes') {
+                            
                             // 'Active__c' is 'Yes', allow further updates
                             // Add your logic for further updates here
-                        } else if (isOldActive=='No') {
+                        } 
+                        else if (isOldActive=='No') {
                             // 'Active__c' is 'No', do not allow further updates
                             // Handle accordingly, e.g., throw an exception or add an error
                             newAccount.addError('Updates are not allowed when Active is No.');
                         }
-                    }
                 }
             }
          }

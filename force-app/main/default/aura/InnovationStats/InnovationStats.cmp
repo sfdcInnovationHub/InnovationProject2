@@ -1,0 +1,131 @@
+<!-- Creating New record Using Aura Component
+ Date- 10/13/2023
+-->
+<aura:component controller="InnovationStatsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="fields" type ="String[]" default="['Innovation Name', 'Domain','Fund', 'Start Date']"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="innovActivity" type="Innovation__c"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:attribute name="InnovList" type="Innovation__c[]"/>
+    <aura:attribute name="isEdit" type="boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    
+    <div onkeyup="{! c.handleKeyUp}">
+        <lightning:input
+            aura:id="enterSearch"
+            name="enterSearch"
+            label="Enter Record name to be searched"
+            type="String"/>
+    </div>
+    
+    
+    									<!-- Handler -->    
+    <div>
+        <aura:if isTrue="{!v.isEdit}">
+            <lightning:button variant="brand" label="Save" onclick="{!c.saveEditRecord}"/>
+            <lightning:button variant="brand" label="Cancel" onclick="{!c.cancelEditRecord}"/>
+        <aura:set attribute="else">
+        	<lightning:button variant ="brand" label="{!$Label.c.New}" class="slds-float_right" onclick="{!c.newRecord}"/>
+        	<lightning:button variant ="brand" label="Edit" onclick="{!c.editRecord}"/>
+        </aura:set>
+        </aura:if>
+    </div>
+    <br/>
+    <br/>
+    
+    									<!-- List view of record page-->
+    
+    <div class="slds-section slds-is-open">
+        
+        <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+            <thead>
+                <tr>
+                    <td scope="col"><lightning:input type="checkbox" aura:id="selectAll" onchange="{!c.toggleSelectAllRecords}" checked="false"/></td>
+                    <td scope="col"><div class="slds-truncate" title="Name">Name</div></td>
+                    <td scope="col"><div class="slds-truncate" title="Fund">Fund</div></td>
+                    <td scope="col"><div class="slds-truncate" title="Stages">Stages</div></td>
+                    <td scope="col"><div class="slds-truncate" title="Domain">Domain</div></td>
+                    <td scope="col"><div class="slds-truncate" title="Start Date">Start Date</div></td>
+                </tr>
+                
+            </thead>
+            
+            						<!--- Body of the Record Page starts from here -->
+            
+            <tbody>
+                
+                						<!--- Record Editing Mode -->
+                
+                <aura:if isTrue="{!v.isEdit}">
+                    <aura:iteration items="{!v.InnovList}" var="Innov" indexVar="index">
+                        <tr>
+                            <td>
+                                <lightning:input value="{!Innov.Name}"></lightning:input>
+                            </td>
+                            <td>
+                                <lightning:input value="{!Innov.Fund__c}"></lightning:input>
+                            </td>
+                            <td>
+                                <lightning:input value="{!Innov.Stages__c}"></lightning:input>
+                            </td>
+                            <td>
+                                <lightning:input value="{!Innov.Domain__c}"></lightning:input>
+                            </td>
+                            <td>
+                                <lightning:input value="{!Innov.Start_Date__c}"></lightning:input>
+                            </td>                    
+                        </tr>
+                    </aura:iteration>
+                    
+                    			<!---When record editing mode will not be activated -->
+                    
+                    <aura:set attribute="else">           
+                    <aura:iteration items="{!v.InnovList}" var="Innov" indexVar="index">
+                        <tr>
+                            <td scope="col"><div class="slds-truncate"><lightning:input type="checkbox" aura:id="{!record.Id}" onchange="{!c.toggleRecordSelection}" checked="false"/></div></td>
+                            <td scope="col"><div class="slds-truncate" title="{!Innov.Name}">{!Innov.Name}</div></td>
+                            <td scope="col"><div class="slds-truncate" title="{!Innov.Fund__c}">{!Innov.Fund__c}</div> </td>
+                            <td scope="col"><div class="slds-truncate" title="{!Innov.Stages__c}">{!Innov.Stages__c}</div></td>
+                            <td scope="col"><div class="slds-truncate" title="{!Innov.Domain__c}">{!Innov.Domain__c}</div></td>
+                            <td scope="col"><div class="slds-truncate" title="{!Innov.Start_Date__c}">{!Innov.Start_Date__c}</div></td>
+                        </tr>
+                    </aura:iteration>
+                    </aura:set>
+                </aura:if>
+                
+                </tbody>
+            
+        </table>
+    </div>
+    <aura:attribute name="isOpen" type="boolean" default="false" access="public"/>
+    
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                
+                
+                <lightning:buttonicon iconName="utility:close" onclick="{!c.closeModal}"
+                                      alternativetext="close" variant="bare-inverse" class="slds-modal__close"/>
+                
+                
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Registraion</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:recordEditForm objectApiName="Innovation__c" onsubmit="{!c.submitDetails}" onsuccess="{!c.handleSuccess}" aura:id="recordEditform" recordId="{!v.innovActivity}">
+                        <lightning:inputField fieldName="Name" aura:id="name"></lightning:inputField>
+                        <lightning:inputField fieldName="Domain__c" aura:id="domain"></lightning:inputField>
+                        <lightning:inputField fieldName="Fund__c" aura:id="fund"></lightning:inputField>
+                        <lightning:inputField fieldName="Stages__c" aura:id="stage"></lightning:inputField>
+                        <lightning:inputField fieldName="Start_Date__c" aura:id="date"></lightning:inputField>
+                        <lightning:button type="submit" name="save" label="Save" class="slds-button slds-button_brand"/>
+                    </lightning:recordEditForm>
+                    
+                </div>
+                
+            </div>
+        </section>
+    </aura:if>
+    
+</aura:component>

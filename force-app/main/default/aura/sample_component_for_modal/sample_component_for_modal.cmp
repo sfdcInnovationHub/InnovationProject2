@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    
+    
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+        	<div class="slds-modal__container">
+                
+                <header class="slds-modal__header">
+            	<h1> header </h1>
+            	</header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                
+					<lightning:input Type="Text" label="Innovation Name" value="{!v.Name}"/>                    
+                </div>
+                <footer class="slds-modal__footer">
+                	<h1>I am Footer </h1>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</aura:component>

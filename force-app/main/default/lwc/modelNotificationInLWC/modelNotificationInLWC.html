@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Scenario:-Geting user input in prompt notification in Lightning web component(LWC)" icon-name="custom:custom3">
+        <div class="slds-m-left_x-large">
+        <lightning-button
+            onclick={handlePromptMessage} label="Click"
+        ></lightning-button></div>
+    </lightning-card>
+    <lightning-card title="Scenario:- Get user response for confirm notification in Lightning web component(LWC)" icon-name="custom:custom3">
+        <div class="slds-m-left_x-large">
+        <lightning-button 
+        onclick={handleConfirmMessage}
+        label="Click"
+        ></lightning-button></div>
+    </lightning-card>
+    <lightning-card title="Scenario:-shown the alert notification in Lightning web component(LWC)" icon-name="custom:custom3">
+        <div class="slds-m-left_x-large">
+            <lightning-button onclick={handleAlert} label="Alert"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

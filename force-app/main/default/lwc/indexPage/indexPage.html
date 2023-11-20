@@ -1,69 +1,63 @@
 <template>
+  
     <lightning-card>
           <table>
             <thead>
               <tr>
                 <th>Number</th>
                 <th>Description</th>
+                <th>Category</th>
+                <th>DownLoad Count</th>
                 <th></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>Setup Salesforce Developer org for hands-on practice</td>
-                <td></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode1}></lightning-button></td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>Create user in Salesforce</td>
-                <td></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode2}></lightning-button></td>
-              </tr>
-              <!-- <tr>
-                <td>3.</td>
-                <td>Salesforce App and Tab creation</td>
-                <td></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode1}></lightning-button></td>
-              </tr> -->
-              <tr>
-                <td>3.</td>
-                <td>Salesforce Apex Trigger framwork for insert record with validation scenario</td>
-                <td><lightning-button label="Run" onclick={navigateToRunCode4}></lightning-button></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode4}></lightning-button></td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>Salesforce Apex Trigger framwork for Update record with validation scenario</td>
-                <td><lightning-button label="Run" onclick={navigateToRunCode5}></lightning-button></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode5}></lightning-button></td>
-              </tr>
-              <tr>
-                <td>5.</td>
-                <td>Salesforce Apex Trigger framwork for Delete record with validation scenario</td>
-                <td><lightning-button label="Run" onclick={navigateToRunCode6}></lightning-button></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode6}></lightning-button></td>
-              </tr>
-              <tr>
-                <td>6.</td>
-                <td>Salesforce Lightning web component(LWC) Binding program</td>
-                <td><lightning-button label="Run" onclick={navigateToRunCode7}></lightning-button></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode7}></lightning-button></td>
-              </tr>
-              <tr>
-                <td>7.</td>
-                <td>Salesforce Lightning web component(LWC) All type of Toast message Binding</td>
-                <td><lightning-button label="Run" onclick={navigateToRunCode8}></lightning-button></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode8}></lightning-button></td>
-              </tr>
-              <tr>
-                <td>8.</td>
-                <td>Salesforce Lightning web component(LWC) All type of Notification Binding</td>
-                <td><lightning-button label="Run" onclick={navigateToRunCode9}></lightning-button></td>
-                <td><lightning-button label="Download" onclick={navigateToDowloadCode9}></lightning-button></td>
-              </tr>
+              <template for:each={indexData} for:item="record">
+                <tr key={record.Id}>
+                  <td>{indexNumber}</td>
+                  <td>{record.Discription__c}</td>
+                  <td>{record.Category__c}</td>
+                  
+                  <td>
+                  <div class="container">
+                      <lightning-icon icon-name="action:preview" alternative-text="Preview" title="Preview" size="small"></lightning-icon>
+                      <span class="count">
+                        <c-view-downlad-count 
+                          record-id ={record.Id} ></c-view-downlad-count>
+                      </span>
+                  </div>
+                  </td>
+                  <td>
+                    <template lwc:if={record.Run__c}> 
+                      <lightning-button 
+                        label="Run" 
+                        onclick={handleRunClick}
+                        data-row-id={record.Category__c}
+                        data-row-id1={record.Run__c}
+                        data-row-id2={record.RunURL__c}
+                        data-row-id3={record.actionName__c}
+                        data-row-id4={record.apiName__c}
+                        data-row-id5={record.objectApiName__c}
+                        data-row-id6={record.type__c}
+                        >
+                      </lightning-button>
+                    </template>
+                  </td>
+                  <td>
+                    <template lwc:if={record.DownloadURL__c}>
+                      <lightning-button 
+                        label="Download" 
+                        onclick={handleDownloadClick}
+                        data-row-id={record.DownloadURL__c}
+                        data-row-id1={record.Id}
+                        >
+                      </lightning-button>
+                    </template>
+                  </td>
+                 
+                </tr>
+              </template>
             </tbody>
           </table>
         </lightning-card>

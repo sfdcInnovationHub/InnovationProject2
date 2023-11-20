@@ -1,129 +1,104 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
+import getMetaDataList from '@salesforce/apex/indexPageController.getMataDataList';
+import updateData from '@salesforce/apex/indexPageController.updateData';
 
 export default class IndexPage extends NavigationMixin(LightningElement) {
-    @track recordId ='0015j00001AkNTBAA3';
+    @track indexData;
+    i = 0;
+    viewE =0;
+    
 
-    navigateToDowloadCode1() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                'url':'https://github.com/sfdcInnovationHub/InnovationProject2/blob/main/force-app/main/default/How%20to%20create%20salesforce%20Dev%20Org'
-            }
-        });
+    get indexNumber(){
+        this.i = this.i+1;
+        return this.i;
+        
     }
-    navigateToDowloadCode2() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                'url':'https://github.com/sfdcInnovationHub/InnovationProject2/blob/main/force-app/main/default/How%20to%20create%20user'
-            }
-        });
+   
+    handleDownloadClick(event) {
+        const rowId = event.target.dataset.rowId;
+        const rowId1 = event.target.dataset.rowId1;
+        console.log('rowId',rowId);
+        console.log('rowId1',rowId1);
+
+        return new Promise((resolve, reject) =>{
+                console.log("3. looking for the Id");
+                updateData({
+                    rowIdCount:rowId1
+                })
+                .then((data) => {
+                    console.log("4. successfully retreived ID");
+                    resolve(data)
+                    console.log(JSON.stringify(data));
+                })
+                .catch((error) => {
+                    reject(error);
+                    console.log(JSON.stringify(data));
+                });
+    }),
+    this[NavigationMixin.Navigate](
+        {
+             type: "standard__webPage",
+             attributes: {
+             url: rowId
+             },
+         });
     }
     
-    navigateToRunCode4() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                'url':'https://samsung71-dev-ed.develop.lightning.force.com/lightning/r/Account/0015j00001AkNTBAA3/view'
-            }
-        });
-    }
-    navigateToDownoadCode4(){
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                "url": "https://github.com/sfdcInnovationHub/InnovationProject2/blob/main/force-app/main/default/triggers/OpportunityTrigger.trigger"
-            }
-        });
+    handleRunClick(event){
+        const rowId = event.target.dataset.rowId;
+        const rowId1 = event.target.dataset.rowId1;
+        const rowId2 = event.target.dataset.rowId2;
+        const rowId3 = event.target.dataset.rowId3;
+        const rowId4 = event.target.dataset.rowId4;
+        const rowId5 = event.target.dataset.rowId5;
+        const rowId6 = event.target.dataset.rowId6;
 
+        console.log(rowId,rowId1,rowId2,rowId3,rowId4,rowId5,rowId6);
+        // type: 'standard__navItemPage',
+        if(rowId6 =='standard__navItemPage'){
+            this[NavigationMixin.Navigate]({
+                type: rowId6,
+                attributes: {
+                    //Name of any CustomTab. Visualforce tabs, web tabs, Lightning Pages, and Lightning Component tabs
+                    apiName: rowId4
+                },
+            });
+        }
+        if(rowId6 =='standard__objectPage'){
+            this[NavigationMixin.Navigate]({
+                type: rowId6,
+                attributes: {
+                    objectApiName: rowId5,
+                    // open record view page
+                    actionName: rowId3,
+                  }
+               
+            });
+        }
+        if(rowId6 =='standard__webPage'){
+            this[NavigationMixin.Navigate](
+            {
+                type: rowId6,
+                attributes: {
+                    //navigate outside the salesforce
+                url: rowId2
+                },
+            });
+
+        }
     }
-    navigateToRunCode5(){
-        this[NavigationMixin.Navigate]({
-            type: "standard__objectPage",
-            attributes: {
-                objectApiName: "Opportunity",
-                actionName: "home",
-              }
+    connectedCallback() {
+        this.getMetaDataList();
+    }
+    getMetaDataList(){
+        getMetaDataList().then(result =>{
+            this.indexData = JSON.parse(JSON.stringify(result));
+            console.log('results__', JSON.stringify(result))
+        }).catch(error=>{
+            console.log(error);
            
-        });
+        })
     }
-    navigateToDowloadCode5() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                "url": "https://github.com/sfdcInnovationHub/InnovationProject2/blob/main/force-app/main/default/triggers/AccountTrigger.trigger"
-            }
-        });
-    }
-    navigateToRunCode6(){
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                'url':"https://samsung71-dev-ed.develop.lightning.force.com/lightning/r/Contact/0035j00001Af9XfAAJ/view"
-            }
-        });
-
-    }
-    navigateToDowloadCode6() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                "url": "https://github.com/sfdcInnovationHub/InnovationProject2/blob/main/force-app/main/default/triggers/ContactTrigger.trigger"
-            }
-        });
-    }
-    navigateToDowloadCode7() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                "url": "https://github.com/sfdcInnovationHub/InnovationProject2/tree/main/force-app/main/default/lwc/helloBinding"
-            }
-        });
-    }
-    navigateToRunCode7(){
-        this[NavigationMixin.Navigate]({
-            type: 'standard__navItemPage',
-            attributes: {
-                //Name of any CustomTab. Visualforce tabs, web tabs, Lightning Pages, and Lightning Component tabs
-                apiName: 'Lightning_web_component_LWC_Binding'
-            },
-        });
-    }
-    navigateToDowloadCode8() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                "url": ""
-            }
-        });
-    }
-    navigateToRunCode8(){
-        this[NavigationMixin.Navigate]({
-            type: 'standard__navItemPage',
-            attributes: {
-                //Name of any CustomTab. Visualforce tabs, web tabs, Lightning Pages, and Lightning Component tabs
-                apiName: 'Message'
-            },
-        });
-    }
-    navigateToDowloadCode9() {
-        this[NavigationMixin.Navigate]({
-            "type": "standard__webPage",
-            "attributes": {
-                "url": ""
-            }
-        });
-    }
-    navigateToRunCode9(){
-        this[NavigationMixin.Navigate]({
-            type: 'standard__navItemPage',
-            attributes: {
-                //Name of any CustomTab. Visualforce tabs, web tabs, Lightning Pages, and Lightning Component tabs
-                apiName: 'Notification'
-            },
-        });
-    }
-
 }

@@ -1,0 +1,16 @@
+<template>
+    <template lwc:if={countlist}>
+        <template for:each={countlist} for:item="count">
+            <!-- <tr key={count.Id}>
+                <td>{count.Count__c}</td>
+            </tr>
+     -->
+     <span key={count.Id}>
+        <span>{count.Count__c}</span>
+     </span>
+         </template>
+       
+    </template> 
+     
+   
+</template>

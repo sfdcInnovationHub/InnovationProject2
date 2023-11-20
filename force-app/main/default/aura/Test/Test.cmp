@@ -1,23 +1,20 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="TestController" >
-    <aura:attribute name="InnovList" type="Innovation__c"/>
-       <div onkeyup="{! c.handleKeyUp}">
-        <lightning:input
-            aura:id="enterSearch"
-            name="enterSearch"
-            label="Enter Record name to be searched"
-            type="String"
-        />
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="InnovationStatsController" >
+    <aura:attribute name="InnovList" type="Innovation__c[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    
+    <aura:iteration items="{!v.InnovList}" var="Innov" indexVar="index">
+<div class="slds-form-element">
+  <div class="slds-form-element__control">
+    <div class="slds-checkbox">
+      <input type="checkbox" name="options" id="{!Innov.Id}" value="checkbox-unique-id-81" checked="" />
+      <label class="slds-checkbox__label" for="{!Innov.Id}">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label">{!Innov.Name}</span>
+          <span class="slds-form-element__label">{!Innov.Domain__c}</span>
+      </label>
     </div>
-                    <aura:iteration items="{!v.InnovList}" var="Innov" indexVar="index">
-                        <tr>
-                            <!---
-                            <td><div class="slds-truncate" title="{!Innov.Id}">{!Innov.Id}</div></td>
-                            -->
-                            <td><div class="slds-truncate" title="{!Innov.Name}">{!Innov.Name}</div></td>
-                            <td><div class="slds-truncate" title="{!Innov.Fund__c}">{!Innov.Fund__c}</div> </td>
-                            <td><div class="slds-truncate" title="{!Innov.Stages__c}">{!Innov.Stages__c}</div></td>
-                            <td><div class="slds-truncate" title="{!Innov.Domain__c}">{!Innov.Domain__c}</div></td>
-                            <td><div class="slds-truncate" title="{!Innov.Start_Date__c}">{!Innov.Start_Date__c}</div></td>  
-                        </tr>
-                    </aura:iteration>
+  </div>
+</div>
+    </aura:iteration>
+    
 </aura:component>

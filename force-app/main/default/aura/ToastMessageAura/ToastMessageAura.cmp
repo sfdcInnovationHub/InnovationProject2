@@ -1,0 +1,72 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_col-bordered" >
+    	<thead>
+			<tr class="slds-line-height-reset slds-text-heading_medium">
+                <th scope="col" class="slds-size_1-of-5"></th>
+            	<th scope="col" class="slds-text-align_center">Dismissible</th>
+                <th scope="col" class="slds-text-align_center">Pester</th>
+                <th scope="col" class="slds-text-align_center">Sticky</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            	<th scope="col" class="slds-size_1-of-5">
+                    <div class="slds-text-title_bold">Error</div>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Dismisible Error" onclick="{!c.handleDismissibleError}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Pester Error" onclick="{!c.handlePesterError}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Sticky Error" onclick="{!c.handleStickyError}"></lightning:button>
+                </th>
+            </tr>
+
+            <tr>
+            	<th scope="col" class="slds-size_1-of-5">
+                    <div class="slds-text-title_bold">Warning</div>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+					<lightning:button variant="brand" label="Dismissible Warning" onclick="{!c.handleDismissibleWarning}"></lightning:button>                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Pester Warning" onclick="{!c.handlePesterWarning}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Sticky Warning" onclick="{!c.handleStickyWarning}"></lightning:button>
+                </th>
+            </tr>
+
+            <tr>
+            	<th scope="col" class="slds-size_1-of-5">
+                    <div class="slds-text-title_bold">Success</div>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Dismissible Success" onclick="{!c.handleDismissibleSuccess}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Pester Success" onclick="{!c.handlePesterSuccess}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Sticky Success" onclick="{!c.handleStickySuccess}"></lightning:button>
+                </th>
+            </tr>            
+
+            <tr>
+            	<th scope="col" class="slds-size_1-of-5">
+                    <div class="slds-text-title_bold">Info</div>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+					<lightning:button variant="brand" label="Dismissible Info" onclick="{!c.handleDismissibleInfo}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Pester Info" onclick="{!c.handlePesterInfo}"></lightning:button>
+                </th>
+                <th scope="col" class="slds-text-align_center">
+                	<lightning:button variant="brand" label="Sticky Info" onclick="{!c.handleStickyInfo}"></lightning:button>
+                </th>
+            </tr>            
+        </tbody>
+    </table>
+</aura:component>

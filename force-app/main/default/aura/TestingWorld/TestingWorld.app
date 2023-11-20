@@ -1,3 +1,3 @@
 <aura:application >
-    <c:Test01/>
+    <c:InnovationStats/>
 </aura:application>

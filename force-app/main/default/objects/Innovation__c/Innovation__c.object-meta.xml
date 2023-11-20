@@ -128,16 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>InnovationRegistrationRecordPage</content>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>InnovationRecords</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>InnovationRegistrationRecordPage</content>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>InnovationRecords</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -164,7 +164,7 @@
         <label>Innovation Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Innovations</pluralLabel>
+    <pluralLabel>Innovation</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

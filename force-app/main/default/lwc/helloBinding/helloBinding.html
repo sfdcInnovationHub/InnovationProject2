@@ -10,12 +10,16 @@
     <!-- title="Lightning web component(LWC) Binding Program with Name!" icon-name="custom:custom14" -->
     <lightning-card>
         <div class="slds-var-m-aroung_medium">
-            <p>
-                Hello,{greeting}!
-            </p>
-            <lightning-input label="Name"
-            value={greeting}
-            onchange={handleChange}></lightning-input>
+            <div class="slds-m-around_small">
+                <p>
+                    Hello,{greeting}!
+                </p>
+                <lightning-input label="Name"
+                value={greeting}
+                onchange={handleChange}></lightning-input>
+
+            </div>
+            
 
         </div>
     </lightning-card>

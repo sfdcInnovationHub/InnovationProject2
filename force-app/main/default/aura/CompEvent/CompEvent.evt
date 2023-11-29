@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="sampleComponentEvent" type="String"/>
+    <aura:attribute name="eventModal" type="Boolean"/>
+</aura:event>

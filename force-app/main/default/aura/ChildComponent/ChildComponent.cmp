@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:registerEvent name="ComponentEvent" type="c:CompEvent"/>
+    <aura:attribute name="enteredText" type="String"/>
+    <div class="slds-box slds-p-around_medium">
+        <div class="slds-text-heading_small">You are in child component!</div>
+        <br/>
+        <lightning:input label="Enter the value to be passed" aura:id="name" value="{!v.enteredText}"/>
+        <lightning:button class="slds-m-top_small" variant="brand" label="Pass Value to Parent" title="Click Here" onclick="{!c.handleClick}"/>
+    </div>
+</aura:component>

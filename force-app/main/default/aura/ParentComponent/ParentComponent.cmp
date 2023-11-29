@@ -1,0 +1,30 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="enteredValue" type="String"/>
+    <aura:attribute name="isOpen" type="Boolean" default="false"/>
+    <div class="slds-box slds-p-around_medium slds-theme_shade">
+        <div class="slds-text-heading_medium">This is Parent Component.</div>
+        <br/>
+        <div class="slds-text-heading_small">Clicking the button, will display child component.</div>
+        <br/>
+        <div class="slds-text-heading_medium">
+            <lightning:button variant="brand" label="Click Here" onclick="{!c.openModal}"/>
+        </div>        
+            <aura:if isTrue="{!v.isOpen}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                		<lightning:buttonicon iconName="utility:close" onclick="{!c.closeModal}"
+                                      alternativetext="close" variant="bare-inverse" class="slds-modal__close"/>
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Hey There! This is the Child Component</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <c:ChildComponent ComponentEvent="{!c.handleComponentEvent}"/>
+                        </div>
+            		</div>
+        		</section>
+    		</aura:if>
+        <div class="slds-text-heading_medium">
+        	<aura:unescapedHtml value="{!v.enteredValue}"/>
+        </div>
+    </div>
+</aura:component>

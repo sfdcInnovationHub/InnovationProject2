@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>4</label>
+    <label>AllTypesOfNavigation</label>
     <protected>false</protected>
     <values>
         <field>Category__c</field>
-        <value xsi:type="xsd:string">Apex</value>
+        <value xsi:type="xsd:string">Aura</value>
     </values>
     <values>
         <field>Discription__c</field>
-        <value xsi:type="xsd:string">Salesforce Apex Trigger framework for Updating record with validation scenario</value>
+        <value xsi:type="xsd:string">Aura Component to show all types of Navigation Tabs</value>
     </values>
     <values>
         <field>DownloadURL__c</field>
-        <value xsi:type="xsd:string">https://github.com/sfdcInnovationHub/InnovationProject2/blob/main/force-app/main/default/triggers/AccountTrigger.trigger</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Download__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>RunURL__c</field>
-        <value xsi:type="xsd:string">https://samsung71-dev-ed.develop.lightning.force.com/lightning/r/Account/0015j00001AkNTBAA3/view</value>
+        <value xsi:type="xsd:string">https://samsung71-dev-ed.develop.lightning.force.com/lightning/n/Aura_Navigation_Tab</value>
     </values>
     <values>
         <field>Run__c</field>
@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>type__c</field>
-        <value xsi:type="xsd:string">standard__webPage</value>
+        <value xsi:type="xsd:string">standard__navItemPage</value>
     </values>
     <values>
         <field>viewCount__c</field>

@@ -1,0 +1,44 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="pageReference" type="Object" />
+    
+    <lightning:navigation aura:id="navService"/>
+    
+    <lightning:card iconName="custom:custom3" title="Scenario - Lightning Component (Aura) using Navigation Services">
+    	<div class="slds-card">
+            <div class="slds-grid slds-grid_vertical slds-p-around_medium">
+                <div class="slds-col">
+                    <div class="slds-card__header-title">Navigate to Record Page</div>
+                </div>
+                <div class="slds-col slds-p-top_x-small">
+                    <lightning:button class="slds-m-right_medium" label="New Account" onclick="{!c.newAccount}" />
+                    <lightning:button class="slds-m-right_medium" label="View Account" onclick="{!c.viewAccount}" />
+                    <lightning:button class="slds-m-right_medium" label="Edit Account" onclick="{!c.editAccount}" />
+                </div>
+                <div class="slds-col slds-p-top_medium">
+                    <div class="slds-card__header-title">Navigate to Record/List Views</div>
+                </div>
+                <div class="slds-col slds-p-top_x-small">
+                    <lightning:button class="slds-m-right_medium" label="Account Recent List View" onclick="{!c.recentAccounts}" />
+                    <lightning:button class="slds-m-right_medium" label="Account Related List" onclick="{!c.relatedListAccounts}" />
+                </div>
+                <div class="slds-col slds-p-top_medium">
+                    <div class="slds-card__header-title">Navigate to Home</div>
+                </div>
+                <div class="slds-col slds-p-top_x-small">
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Home" onclick="{!c.navigateToHome}" />
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Contact Home" onclick="{!c.contactHomePage}" />
+                </div>
+                <div class="slds-col slds-p-top_medium">
+                    <div class="slds-card__header-title">Navigate to Other</div>
+                </div>
+                <div class="slds-col slds-p-top_x-small">
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Chatter Home" onclick="{!c.chatterHomePage}" />
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Reports" onclick="{!c.navigateToReports}" />
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Tab" onclick="{!c.navigateToTab}" />
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Outside Salesforce" onclick="{!c.navigateToExternalPage}" />
+                    <lightning:button class="slds-m-right_medium" label="Navigate to Files" onclick="{!c.navigateToFiles}" />
+                </div>
+            </div>
+		</div>
+    </lightning:card>
+</aura:component>

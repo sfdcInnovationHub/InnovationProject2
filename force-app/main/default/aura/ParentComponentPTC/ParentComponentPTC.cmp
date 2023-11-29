@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="enteredText" type="String"/>
+    <aura:attribute name="isOpen" type="Boolean" default="true"/>
+    <div class="slds-box slds-p-around_medium slds-theme_shade">
+        <div class="slds-text-heading_medium">Hey There! I am the Parent Component</div>
+        <div class="slds-text-heading_medium">
+        	<lightning:input label="Enter some value to be passed to child component" aura:id="name" value="{!v.enteredText}"/>
+        </div>
+		<lightning:button class="slds-m-top_medium" variant="brand" label="Pass Value to Child" title="Click Here" onclick="{!c.callChildComponent}"/>
+    </div>
+    <c:ChildComponentPTC aura:id="compChild"/>
+</aura:component>

@@ -1,3 +1,3 @@
 <aura:application >
-    <c:ToastMessageAura/>
+    <c:ParentComponentPTC/>
 </aura:application>

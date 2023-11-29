@@ -1,0 +1,24 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+    <aura:attribute name="isOpen" type="Boolean" default="false"/>
+    <aura:attribute name="message" type="String" default="default message"/>
+    <aura:method name="childComponentMethod">
+        <aura:attribute name="message" type="String" default="default message"/>
+        <aura:attribute name="isOpen" type="Boolean" default="false"/>
+    </aura:method>
+    <aura:if isTrue="{!v.isOpen}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                		<lightning:buttonicon iconName="utility:close" onclick="{!c.closeModal}"
+                                      alternativetext="close" variant="bare-inverse" class="slds-modal__close"/>
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                Hey There! This is the Child Component</h2>
+                        </header>
+                         <div class="slds-modal__content slds-p-around_medium slds-text-align_center slds-text-heading_small" id="modal-content-id-1">
+                             The message from the parent component is <b>{!v.message}</b>
+                        </div>
+            		</div>
+        		</section>
+    		</aura:if>
+</aura:component>
